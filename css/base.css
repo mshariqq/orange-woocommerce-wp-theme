@@ -1,0 +1,20 @@
+:root {
+  --navy: #0A1E3F;
+  --orange: #F47443;
+  --light: #f8f9fb;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+/* REMOVE DEFAULT WP STYLES */
+h1, h2, h3, h4, h5, h6 {
+  margin-top: 0;
+}
+
+/* OPTIONAL: hide auto title (if needed) */
+.entry-title {
+  display: none;
+}

@@ -1,0 +1,413 @@
+/*
+Theme Name: SnapServe Custom Theme
+Theme URI: https://digitalheroes.co.in
+Author: Md Shariqq
+Author URI: https://github.com/mshariqq
+Description: Custom high-performance WooCommerce theme for appliance and auto parts ecommerce with modern UI/UX.
+Version: 1.0
+License: GNU General Public License v2 or later
+License URI: https://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: snapserve
+Tags: ecommerce, woocommerce, custom-theme, responsive, fast, bootstrap
+*/
+
+
+
+/* FRONT PAGE */
+/* HERO SECTION */
+.ss-hero {
+  padding: 80px 0;
+  background: linear-gradient(180deg, #f8f9fb 0%, #ffffff 100%);
+}
+
+/* TITLE */
+.ss-hero-title {
+  font-size: 42px;
+  font-weight: 800;
+  color: var(--navy);
+  line-height: 1.2;
+}
+
+.ss-hero-title span {
+  color: var(--orange);
+}
+
+/* SUBTEXT */
+.ss-hero-sub {
+  font-size: 16px;
+  margin: 15px 0 25px;
+  color: #555;
+}
+
+/* LARGE SEARCH */
+.ss-search-box.large {
+  padding: 10px 15px;
+  border-radius: 60px;
+}
+
+.ss-search-box.large input {
+  font-size: 16px;
+}
+
+/* FILTERS */
+.ss-quick-filters {
+  display: flex;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.ss-quick-filters select {
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  font-size: 14px;
+}
+
+/* TRUST */
+.ss-hero-trust {
+  display: flex;
+  gap: 20px;
+  margin-top: 20px;
+  font-size: 14px;
+  color: #333;
+}
+
+.ss-hero-trust i {
+  color: var(--orange);
+  margin-right: 5px;
+}
+
+/* IMAGE */
+.ss-hero-img {
+  max-width: 90%;
+}
+
+/* MOBILE */
+@media (max-width: 991px) {
+  .ss-hero {
+    padding: 50px 0;
+    text-align: center;
+  }
+
+  .ss-hero-title {
+    font-size: 28px;
+  }
+
+  .ss-quick-filters {
+    flex-direction: column;
+  }
+
+  .ss-hero-trust {
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+}
+
+
+
+
+
+
+
+/* Full Width Page Premium Card */
+.page-fullwidth .page-hero {
+    padding: 100px 0 60px;
+    background: linear-gradient(135deg, #f8f9fb, #eef2f7);
+    text-align: center;
+}
+
+.page-fullwidth .breadcrumbs {
+    font-size: 14px;
+    margin-bottom: 15px;
+    color: #6b7280;
+}
+.page-fullwidth .breadcrumbs a {
+    color: #f4723d;
+    text-decoration: none;
+}
+.page-fullwidth .breadcrumbs a:hover {
+    text-decoration: underline;
+}
+
+.page-fullwidth .page-title {
+    font-size: 3rem;
+    font-weight: 800;
+    color: #1e293b;
+    margin-bottom: 10px;
+}
+
+/* Wrap all Gutenberg content in one premium card */
+.page-fullwidth .content-card {
+    background: #fff;
+    padding: 40px;
+    border-radius: 16px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.08);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+/* Optional hover effect for card */
+.page-fullwidth .content-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 30px 80px rgba(0,0,0,0.12);
+}
+
+/* Responsive */
+@media (max-width: 991px) {
+    .page-fullwidth .page-title {
+        font-size: 2.2rem;
+    }
+    .page-fullwidth .content-card {
+        padding: 25px;
+    }
+}
+
+
+
+
+
+
+/* Page With Sidebar — Single Premium Card */
+
+.page-with-sidebar .page-hero {
+    padding: 100px 0 60px;
+    background: linear-gradient(135deg, #f8f9fb, #eef2f7);
+    text-align: center;
+}
+
+.page-with-sidebar .breadcrumbs {
+    font-size: 14px;
+    margin-bottom: 15px;
+    color: #6b7280;
+}
+.page-with-sidebar .breadcrumbs a {
+    color: #f4723d;
+    text-decoration: none;
+}
+.page-with-sidebar .breadcrumbs a:hover {
+    text-decoration: underline;
+}
+
+.page-with-sidebar .page-title {
+    font-size: 3rem;
+    font-weight: 800;
+    color: #1e293b;
+    margin-bottom: 10px;
+}
+
+/* Wrap all Gutenberg content in one premium card */
+.page-with-sidebar .content-card {
+    background: #fff;
+    padding: 40px;
+    border-radius: 16px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.08);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+/* Optional hover effect for entire content block */
+.page-with-sidebar .content-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 30px 80px rgba(0,0,0,0.12);
+}
+
+/* Sidebar cards */
+.sidebar-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.sidebar-card {
+    background: #fff;
+    padding: 30px;
+    border-radius: 16px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.06);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.sidebar-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 25px 60px rgba(0,0,0,0.1);
+}
+
+/* Responsive */
+@media (max-width: 991px) {
+    .page-with-sidebar .page-title {
+        font-size: 2.2rem;
+    }
+    .page-with-sidebar .content-card,
+    .sidebar-card {
+        padding: 25px;
+    }
+}
+
+
+
+
+/* HOMEPAGE CSS */
+/* Featured Products */
+/* SECTION */
+.ss-products {
+  padding: 90px 0;
+  background: #f8f9fb;
+}
+
+/* GRID */
+.ss-product-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+
+/* CARD */
+.ss-product-card {
+  background: #fff;
+  border-radius: 20px;
+  overflow: hidden;
+  border: 1px solid #eee;
+  transition: all 0.35s ease;
+  position: relative;
+}
+
+/* IMAGE */
+.ss-product-img {
+  position: relative;
+  overflow: hidden;
+}
+
+.ss-product-img img {
+  width: 100%;
+  transition: 0.4s;
+}
+
+/* BADGE */
+.ss-badge {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  background: var(--orange);
+  color: #fff;
+  font-size: 12px;
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-weight: 600;
+}
+
+/* BODY */
+.ss-product-body {
+  padding: 18px;
+}
+
+/* RATING */
+.ss-rating {
+  font-size: 13px;
+  color: #f59e0b;
+  margin-bottom: 6px;
+}
+
+.ss-rating span {
+  color: #888;
+  margin-left: 4px;
+}
+
+/* TITLE */
+.ss-product-body h6 {
+  font-size: 15px;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+/* META */
+.ss-product-meta {
+  font-size: 13px;
+  color: #777;
+}
+
+/* BOTTOM */
+.ss-product-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 14px;
+}
+
+/* PRICE */
+.ss-price {
+  font-weight: 700;
+  color: var(--navy);
+  font-size: 16px;
+}
+
+.ss-old-price {
+  font-size: 13px;
+  color: #999;
+  text-decoration: line-through;
+  margin-left: 6px;
+}
+
+/* CART BUTTON */
+.ss-add-cart {
+  background: var(--orange);
+  border: none;
+  color: #fff;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  box-shadow: 0 8px 20px rgba(244,116,67,0.3);
+}
+
+.ss-add-cart:hover {
+  transform: scale(1.1);
+  background: #000;
+}
+
+/* HOVER EFFECT */
+.ss-product-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 25px 60px rgba(0,0,0,0.12);
+}
+
+.ss-product-card:hover img {
+  transform: scale(1.05);
+}
+
+/* OPTIONAL QUICK ACTIONS (ADVANCED FEEL) */
+.ss-product-card::after {
+  content: "Quick View";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, 20px);
+  background: #fff;
+  padding: 8px 14px;
+  border-radius: 20px;
+  font-size: 13px;
+  opacity: 0;
+  transition: 0.3s;
+}
+
+.ss-product-card:hover::after {
+  opacity: 1;
+  transform: translate(-50%, -50%);
+}
+
+/* MOBILE */
+@media (max-width: 991px) {
+  .ss-product-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .ss-products {
+    padding: 60px 0;
+  }
+}
+.ss-product-body h6 a {
+    color: inherit;
+    text-decoration: none;
+}
+.ss-product-body h6 a:hover {
+    color: var(--orange);
+}
