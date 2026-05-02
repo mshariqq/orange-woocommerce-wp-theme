@@ -14,9 +14,14 @@ get_header();
                     Search results for: "<?php echo get_search_query(); ?>"
                 </h1>
 
-                <span class="count">
-                    <?php echo $wp_query->found_posts . ' products'; ?>
-                </span>
+                <div class="shop-meta">
+                    <span class="count">
+                        <?php echo $wp_query->found_posts . ' products'; ?>
+                    </span>
+                    <button class="ss-filter-toggle d-lg-none" data-bs-toggle="collapse" data-bs-target="#shopFilters">
+                        <i class="bi bi-funnel"></i> Filters
+                    </button>
+                </div>
             </div>
 
             <div class="right">
@@ -27,7 +32,7 @@ get_header();
         <div class="shop-layout">
 
             <!-- SIDEBAR -->
-            <aside class="shop-filters">
+            <aside class="shop-filters collapse d-lg-block" id="shopFilters">
 
                 <div class="filter-box">
                     <h4>Search</h4>
@@ -45,6 +50,22 @@ get_header();
                         ?>
                     </ul>
                 </div>
+
+                <?php
+                $brands = get_terms( array( 'taxonomy' => 'pa_brand', 'hide_empty' => true ) );
+                if ( ! empty( $brands ) && ! is_wp_error( $brands ) ) : ?>
+                <div class="filter-box">
+                    <h4>Brands</h4>
+                    <ul>
+                        <?php
+                        wp_list_categories([
+                            'taxonomy' => 'pa_brand',
+                            'title_li' => '',
+                        ]);
+                        ?>
+                    </ul>
+                </div>
+                <?php endif; ?>
 
                 <div class="filter-box">
                     <h4>Filter by Price</h4>
@@ -75,7 +96,13 @@ get_header();
 
                             <div class="product-image">
                                 <a href="<?php the_permalink(); ?>">
-                                    <?php echo $product->get_image(); ?>
+                                    <?php 
+                                    if ( has_post_thumbnail() ) {
+                                        echo $product->get_image(); 
+                                    } else {
+                                        echo '<img src="https://placehold.co/200x150?text=No+Image" alt="'.get_the_title() .'" />';
+                                    }
+                                    ?>
                                 </a>
 
                                 <?php if ($product->is_on_sale()) : ?>
@@ -85,10 +112,7 @@ get_header();
 
                             <div class="product-info">
 
-                                <div class="rating">
-                                    <?php echo wc_get_rating_html($product->get_average_rating()); ?>
-                                    <span>(<?php echo $product->get_review_count(); ?>)</span>
-                                </div>
+                                <?php echo ss_get_rating_html( $product ); ?>
 
                                 <h3 class="title">
                                     <a href="<?php the_permalink(); ?>">

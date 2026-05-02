@@ -6,12 +6,11 @@
   border-top: 1px solid #eee;
   border-bottom: 1px solid #eee;
   padding: 0;
+  position: relative;
 }
 @media (min-width: 992px) {
   .ss-navbar {
-    position: sticky;
-    top: 0;
-    z-index: 999;
+    z-index: 10;
     box-shadow: 0 4px 12px rgba(0,0,0,0.05);
   }
 }
@@ -56,6 +55,29 @@
   position: relative;
   white-space: nowrap;
   transition: color 0.2s;
+}
+
+/* =====================
+   DROPDOWN ICON
+   ===================== */
+.ss-menu .menu-item-has-children > a {
+  padding-right: 32px;
+}
+.ss-menu .menu-item-has-children > a::before {
+  content: "\F282"; /* Bootstrap chevron-down */
+  font-family: "bootstrap-icons";
+  position: absolute;
+  right: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 10px;
+  font-weight: 700;
+  opacity: 0.5;
+  transition: all 0.2s ease;
+}
+.ss-menu .menu-item-has-children:hover > a::before {
+  transform: translateY(-50%) rotate(180deg);
+  opacity: 1;
 }
 
 /* =====================
@@ -165,4 +187,20 @@
   .ss-navbar .navbar-collapse {
     display: flex !important;
   }
+}
+
+
+
+
+/* =====================
+   FULL STICKY HEADER
+   ===================== */
+.ss-sticky-header {
+  position: sticky;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  background: #fff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
 }

@@ -12,15 +12,49 @@ Tags: ecommerce, woocommerce, custom-theme, responsive, fast, bootstrap
 */
 
 
+/* ================================================================
+   CSS VARIABLES
+================================================================ */
+:root {
+  --navy:         #0A1E3F;
+  --navy-mid:     #0d2550;
+  --orange:       #F47443;
+  --orange-dark:  #e8622e;
+  --green:        #70B354;
+  --white:        #ffffff;
+  --font:         'Open Sans', Arial, sans-serif;
 
-/* FRONT PAGE */
-/* HERO SECTION */
+  /* Transition tokens — change once, updates everywhere */
+  --t-base:       0.3s ease-in-out;
+  --t-fast:       0.2s ease-in-out;
+  --t-img:        0.4s ease-in-out;
+  --shadow-card:  0 25px 60px rgba(0,0,0,0.12);
+  --shadow-card-hover: 0 32px 72px rgba(0,0,0,0.16);
+  --shadow-btn:   0 8px 24px rgba(244,116,67,0.35);
+  --shadow-btn-navy: 0 8px 24px rgba(10,30,63,0.28);
+}
+
+
+/* ================================================================
+   ACCESSIBILITY — Respect prefers-reduced-motion
+================================================================ */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    transition: none !important;
+    animation: none !important;
+    transform: none !important;
+  }
+}
+
+
+/* ================================================================
+   FRONT PAGE — HERO SECTION
+================================================================ */
 .ss-hero {
   padding: 80px 0;
   background: linear-gradient(180deg, #f8f9fb 0%, #ffffff 100%);
 }
 
-/* TITLE */
 .ss-hero-title {
   font-size: 42px;
   font-weight: 800;
@@ -32,7 +66,6 @@ Tags: ecommerce, woocommerce, custom-theme, responsive, fast, bootstrap
   color: var(--orange);
 }
 
-/* SUBTEXT */
 .ss-hero-sub {
   font-size: 16px;
   margin: 15px 0 25px;
@@ -49,21 +82,81 @@ Tags: ecommerce, woocommerce, custom-theme, responsive, fast, bootstrap
   font-size: 16px;
 }
 
-/* FILTERS */
-.ss-quick-filters {
+/* Search input focus state */
+.ss-search-box input,
+.ss-search-box input[type="search"],
+.ss-search-box input[type="text"] {
+  transition:
+    border-color var(--t-base),
+    box-shadow var(--t-base);
+}
+.ss-search-box input:focus,
+.ss-search-box input[type="search"]:focus,
+.ss-search-box input[type="text"]:focus {
+  border-color: var(--orange);
+  box-shadow: 0 0 0 3px rgba(244,116,67,0.18),
+              0 4px 16px rgba(0,0,0,0.07);
+  outline: none;
+}
+
+/* HERO BUTTONS */
+.ss-hero-btns {
   display: flex;
+  gap: 15px;
+  margin-top: 25px;
+}
+
+.ss-btn {
+  display: inline-flex;
+  align-items: center;
   gap: 10px;
-  margin-top: 15px;
+  padding: 14px 28px;
+  border-radius: 12px;
+  font-size: 15px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: all var(--t-base);
+  letter-spacing: 0.3px;
 }
 
-.ss-quick-filters select {
-  padding: 10px;
-  border-radius: 8px;
-  border: 1px solid #ddd;
-  font-size: 14px;
+.ss-btn-orange {
+  background: var(--orange);
+  color: #fff !important;
+  box-shadow: var(--shadow-btn);
+}
+.ss-btn-orange:hover {
+  background: var(--orange-dark);
+  transform: translateY(-3px);
+  box-shadow: 0 12px 32px rgba(244,116,67,0.45);
 }
 
-/* TRUST */
+.ss-btn-navy {
+  background: var(--navy);
+  color: #fff !important;
+  box-shadow: var(--shadow-btn-navy);
+}
+.ss-btn-navy:hover {
+  background: var(--navy-mid);
+  transform: translateY(-3px);
+  box-shadow: 0 12px 32px rgba(10,30,63,0.35);
+}
+
+.ss-btn i {
+  font-size: 18px;
+}
+
+@media (max-width: 575px) {
+  .ss-hero-btns {
+    flex-direction: column;
+    width: 100%;
+  }
+  .ss-btn {
+    justify-content: center;
+    width: 100%;
+  }
+}
+
+/* TRUST BAR */
 .ss-hero-trust {
   display: flex;
   gap: 20px;
@@ -80,23 +173,23 @@ Tags: ecommerce, woocommerce, custom-theme, responsive, fast, bootstrap
 /* IMAGE */
 .ss-hero-img {
   max-width: 90%;
+  transition: transform var(--t-img);
+}
+.ss-hero-img:hover {
+  transform: translateY(-4px);
 }
 
-/* MOBILE */
 @media (max-width: 991px) {
   .ss-hero {
     padding: 50px 0;
     text-align: center;
   }
-
   .ss-hero-title {
     font-size: 28px;
   }
-
-  .ss-quick-filters {
-    flex-direction: column;
+  .ss-hero-btns {
+    justify-content: center;
   }
-
   .ss-hero-trust {
     justify-content: center;
     flex-wrap: wrap;
@@ -104,148 +197,144 @@ Tags: ecommerce, woocommerce, custom-theme, responsive, fast, bootstrap
 }
 
 
-
-
-
-
-
-/* Full Width Page Premium Card */
+/* ================================================================
+   FULL WIDTH PAGE — PREMIUM CARD LAYOUT
+================================================================ */
 .page-fullwidth .page-hero {
-    padding: 100px 0 60px;
-    background: linear-gradient(135deg, #f8f9fb, #eef2f7);
-    text-align: center;
+  padding: 100px 0 60px;
+  background: linear-gradient(135deg, #f8f9fb, #eef2f7);
+  text-align: center;
 }
 
 .page-fullwidth .breadcrumbs {
-    font-size: 14px;
-    margin-bottom: 15px;
-    color: #6b7280;
+  font-size: 14px;
+  margin-bottom: 15px;
+  color: #6b7280;
 }
+
 .page-fullwidth .breadcrumbs a {
-    color: #f4723d;
-    text-decoration: none;
+  color: #f4723d;
+  text-decoration: none;
+  transition: color var(--t-base);
 }
 .page-fullwidth .breadcrumbs a:hover {
-    text-decoration: underline;
+  color: var(--orange-dark);
+  text-decoration: underline;
 }
 
 .page-fullwidth .page-title {
-    font-size: 3rem;
-    font-weight: 800;
-    color: #1e293b;
-    margin-bottom: 10px;
+  font-size: 3rem;
+  font-weight: 800;
+  color: #1e293b;
+  margin-bottom: 10px;
 }
 
-/* Wrap all Gutenberg content in one premium card */
 .page-fullwidth .content-card {
-    background: #fff;
-    padding: 40px;
-    border-radius: 16px;
-    box-shadow: 0 20px 60px rgba(0,0,0,0.08);
-    transition: transform 0.3s, box-shadow 0.3s;
+  background: #fff;
+  padding: 40px;
+  border-radius: 16px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.08);
+  transition:
+    transform var(--t-base),
+    box-shadow var(--t-base);
 }
-
-/* Optional hover effect for card */
 .page-fullwidth .content-card:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 30px 80px rgba(0,0,0,0.12);
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-card-hover);
 }
 
-/* Responsive */
 @media (max-width: 991px) {
-    .page-fullwidth .page-title {
-        font-size: 2.2rem;
-    }
-    .page-fullwidth .content-card {
-        padding: 25px;
-    }
+  .page-fullwidth .page-title {
+    font-size: 2.2rem;
+  }
+  .page-fullwidth .content-card {
+    padding: 25px;
+  }
 }
 
 
-
-
-
-
-/* Page With Sidebar — Single Premium Card */
-
+/* ================================================================
+   PAGE WITH SIDEBAR — PREMIUM CARD LAYOUT
+================================================================ */
 .page-with-sidebar .page-hero {
-    padding: 100px 0 60px;
-    background: linear-gradient(135deg, #f8f9fb, #eef2f7);
-    text-align: center;
+  padding: 100px 0 60px;
+  background: linear-gradient(135deg, #f8f9fb, #eef2f7);
+  text-align: center;
 }
 
 .page-with-sidebar .breadcrumbs {
-    font-size: 14px;
-    margin-bottom: 15px;
-    color: #6b7280;
+  font-size: 14px;
+  margin-bottom: 15px;
+  color: #6b7280;
 }
+
 .page-with-sidebar .breadcrumbs a {
-    color: #f4723d;
-    text-decoration: none;
+  color: #f4723d;
+  text-decoration: none;
+  transition: color var(--t-base);
 }
 .page-with-sidebar .breadcrumbs a:hover {
-    text-decoration: underline;
+  color: var(--orange-dark);
+  text-decoration: underline;
 }
 
 .page-with-sidebar .page-title {
-    font-size: 3rem;
-    font-weight: 800;
-    color: #1e293b;
-    margin-bottom: 10px;
+  font-size: 3rem;
+  font-weight: 800;
+  color: #1e293b;
+  margin-bottom: 10px;
 }
 
-/* Wrap all Gutenberg content in one premium card */
 .page-with-sidebar .content-card {
-    background: #fff;
-    padding: 40px;
-    border-radius: 16px;
-    box-shadow: 0 20px 60px rgba(0,0,0,0.08);
-    transition: transform 0.3s, box-shadow 0.3s;
+  background: #fff;
+  padding: 40px;
+  border-radius: 16px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.08);
+  transition:
+    transform var(--t-base),
+    box-shadow var(--t-base);
 }
-
-/* Optional hover effect for entire content block */
 .page-with-sidebar .content-card:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 30px 80px rgba(0,0,0,0.12);
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-card-hover);
 }
 
-/* Sidebar cards */
+/* Sidebar wrapper */
 .sidebar-wrapper {
-    display: flex;
-    flex-direction: column;
-    gap: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
 }
 
+/* Sidebar card */
 .sidebar-card {
-    background: #fff;
-    padding: 30px;
-    border-radius: 16px;
-    box-shadow: 0 15px 40px rgba(0,0,0,0.06);
-    transition: transform 0.3s, box-shadow 0.3s;
+  background: #fff;
+  padding: 30px;
+  border-radius: 16px;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.06);
+  transition:
+    transform var(--t-base),
+    box-shadow var(--t-base);
 }
-
 .sidebar-card:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 25px 60px rgba(0,0,0,0.1);
+  transform: translateY(-4px);
+  box-shadow: 0 28px 64px rgba(0,0,0,0.11);
 }
 
-/* Responsive */
 @media (max-width: 991px) {
-    .page-with-sidebar .page-title {
-        font-size: 2.2rem;
-    }
-    .page-with-sidebar .content-card,
-    .sidebar-card {
-        padding: 25px;
-    }
+  .page-with-sidebar .page-title {
+    font-size: 2.2rem;
+  }
+  .page-with-sidebar .content-card,
+  .sidebar-card {
+    padding: 25px;
+  }
 }
 
 
-
-
-/* HOMEPAGE CSS */
-/* Featured Products */
-/* SECTION */
+/* ================================================================
+   HOMEPAGE — FEATURED PRODUCTS SECTION
+================================================================ */
 .ss-products {
   padding: 90px 0;
   background: #f8f9fb;
@@ -258,17 +347,32 @@ Tags: ecommerce, woocommerce, custom-theme, responsive, fast, bootstrap
   gap: 24px;
 }
 
-/* CARD */
+/* ----------------------------------------------------------------
+   PRODUCT CARD
+   transition: individual properties only — avoid `all`
+   which causes repaints on every property including color, font etc.
+---------------------------------------------------------------- */
 .ss-product-card {
   background: #fff;
   border-radius: 20px;
   overflow: hidden;
   border: 1px solid #eee;
-  transition: all 0.35s ease;
   position: relative;
+  transition:
+    transform var(--t-base),
+    box-shadow var(--t-base),
+    border-color var(--t-base);
+}
+.ss-product-card:hover {
+  transform: translateY(-10px);
+  box-shadow: var(--shadow-card);
+  border-color: rgba(244,116,67,0.18);
 }
 
-/* IMAGE */
+/* ----------------------------------------------------------------
+   PRODUCT IMAGE — zoom on card hover, not on img hover directly
+   overflow: hidden on .ss-product-img clips the zoom cleanly
+---------------------------------------------------------------- */
 .ss-product-img {
   position: relative;
   overflow: hidden;
@@ -276,7 +380,11 @@ Tags: ecommerce, woocommerce, custom-theme, responsive, fast, bootstrap
 
 .ss-product-img img {
   width: 100%;
-  transition: 0.4s;
+  transition: transform var(--t-img);
+  will-change: transform;
+}
+.ss-product-card:hover .ss-product-img img {
+  transform: scale(1.07);
 }
 
 /* BADGE */
@@ -290,6 +398,10 @@ Tags: ecommerce, woocommerce, custom-theme, responsive, fast, bootstrap
   padding: 5px 12px;
   border-radius: 20px;
   font-weight: 600;
+  transition: background var(--t-base);
+}
+.ss-product-card:hover .ss-badge {
+  background: var(--orange-dark);
 }
 
 /* BODY */
@@ -303,7 +415,6 @@ Tags: ecommerce, woocommerce, custom-theme, responsive, fast, bootstrap
   color: #f59e0b;
   margin-bottom: 6px;
 }
-
 .ss-rating span {
   color: #888;
   margin-left: 4px;
@@ -315,6 +426,14 @@ Tags: ecommerce, woocommerce, custom-theme, responsive, fast, bootstrap
   font-weight: 600;
   margin-bottom: 4px;
 }
+.ss-product-body h6 a {
+  color: inherit;
+  text-decoration: none;
+  transition: color var(--t-base);
+}
+.ss-product-body h6 a:hover {
+  color: var(--orange);
+}
 
 /* META */
 .ss-product-meta {
@@ -322,7 +441,7 @@ Tags: ecommerce, woocommerce, custom-theme, responsive, fast, bootstrap
   color: #777;
 }
 
-/* BOTTOM */
+/* BOTTOM ROW */
 .ss-product-bottom {
   display: flex;
   justify-content: space-between;
@@ -336,7 +455,6 @@ Tags: ecommerce, woocommerce, custom-theme, responsive, fast, bootstrap
   color: var(--navy);
   font-size: 16px;
 }
-
 .ss-old-price {
   font-size: 13px;
   color: #999;
@@ -344,7 +462,10 @@ Tags: ecommerce, woocommerce, custom-theme, responsive, fast, bootstrap
   margin-left: 6px;
 }
 
-/* CART BUTTON */
+/* ----------------------------------------------------------------
+   ADD TO CART BUTTON — circular
+   Distinct hover: navy bg + scale + stronger shadow
+---------------------------------------------------------------- */
 .ss-add-cart {
   background: var(--orange);
   border: none;
@@ -355,26 +476,27 @@ Tags: ecommerce, woocommerce, custom-theme, responsive, fast, bootstrap
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: all 0.3s ease;
+  cursor: pointer;
   box-shadow: 0 8px 20px rgba(244,116,67,0.3);
+  transition:
+    background var(--t-base),
+    transform var(--t-base),
+    box-shadow var(--t-base);
 }
-
 .ss-add-cart:hover {
-  transform: scale(1.1);
-  background: #000;
+  background: var(--navy);
+  transform: scale(1.15) rotate(8deg);
+  box-shadow: var(--shadow-btn-navy);
+}
+.ss-add-cart:active {
+  transform: scale(0.97);
+  box-shadow: none;
 }
 
-/* HOVER EFFECT */
-.ss-product-card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 25px 60px rgba(0,0,0,0.12);
-}
-
-.ss-product-card:hover img {
-  transform: scale(1.05);
-}
-
-/* OPTIONAL QUICK ACTIONS (ADVANCED FEEL) */
+/* ----------------------------------------------------------------
+   QUICK VIEW OVERLAY — ::after pseudo element
+   Smooth appear + slide up from below centre
+---------------------------------------------------------------- */
 .ss-product-card::after {
   content: "Quick View";
   position: absolute;
@@ -382,32 +504,413 @@ Tags: ecommerce, woocommerce, custom-theme, responsive, fast, bootstrap
   left: 50%;
   transform: translate(-50%, 20px);
   background: #fff;
-  padding: 8px 14px;
+  color: var(--navy);
+  padding: 8px 18px;
   border-radius: 20px;
   font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
   opacity: 0;
-  transition: 0.3s;
+  pointer-events: none;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+  transition:
+    opacity var(--t-base),
+    transform var(--t-base);
 }
-
 .ss-product-card:hover::after {
   opacity: 1;
   transform: translate(-50%, -50%);
 }
 
-/* MOBILE */
 @media (max-width: 991px) {
   .ss-product-grid {
     grid-template-columns: repeat(2, 1fr);
   }
-
   .ss-products {
     padding: 60px 0;
   }
+  /* Disable quick view overlay on touch — it stays visible on tap */
+  .ss-product-card::after {
+    display: none;
+  }
 }
-.ss-product-body h6 a {
-    color: inherit;
-    text-decoration: none;
+
+
+/* ================================================================
+   WOOCOMMERCE — BUTTONS
+   Covers: Add to Cart, Checkout, Place Order, View Cart
+================================================================ */
+.woocommerce a.button,
+.woocommerce button.button,
+.woocommerce input.button,
+.woocommerce #respond input#submit,
+.woocommerce .cart .button,
+.woocommerce .cart input.button,
+.woocommerce-page a.button,
+.woocommerce-page button.button,
+.woocommerce-page input.button {
+  transition:
+    background var(--t-base),
+    color var(--t-base),
+    box-shadow var(--t-base),
+    transform var(--t-base) !important;
 }
-.ss-product-body h6 a:hover {
-    color: var(--orange);
+.woocommerce a.button:hover,
+.woocommerce button.button:hover,
+.woocommerce input.button:hover,
+.woocommerce #respond input#submit:hover,
+.woocommerce .cart .button:hover,
+.woocommerce-page a.button:hover,
+.woocommerce-page button.button:hover,
+.woocommerce-page input.button:hover {
+  background: var(--orange-dark) !important;
+  box-shadow: var(--shadow-btn) !important;
+  transform: translateY(-2px) !important;
+}
+.woocommerce a.button:active,
+.woocommerce button.button:active,
+.woocommerce-page a.button:active,
+.woocommerce-page button.button:active {
+  transform: translateY(0) !important;
+  box-shadow: none !important;
+}
+
+/* Alt button — Place Order, Checkout CTA */
+.woocommerce a.button.alt,
+.woocommerce button.button.alt,
+.woocommerce input.button.alt,
+.woocommerce #payment #place_order,
+.woocommerce-page #payment #place_order {
+  transition:
+    background var(--t-base),
+    box-shadow var(--t-base),
+    transform var(--t-base) !important;
+}
+.woocommerce a.button.alt:hover,
+.woocommerce button.button.alt:hover,
+.woocommerce input.button.alt:hover,
+.woocommerce #payment #place_order:hover,
+.woocommerce-page #payment #place_order:hover {
+  background: var(--navy-mid) !important;
+  box-shadow: var(--shadow-btn-navy) !important;
+  transform: translateY(-2px) !important;
+}
+
+
+/* ================================================================
+   WOOCOMMERCE — PRODUCT LOOP CARDS
+================================================================ */
+.woocommerce ul.products li.product,
+.woocommerce-page ul.products li.product {
+  transition:
+    transform var(--t-base),
+    box-shadow var(--t-base) !important;
+}
+.woocommerce ul.products li.product:hover,
+.woocommerce-page ul.products li.product:hover {
+  transform: translateY(-6px) !important;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.1) !important;
+}
+
+/* WooCommerce loop product thumbnails */
+.woocommerce ul.products li.product a img,
+.woocommerce-page ul.products li.product a img {
+  transition:
+    transform var(--t-img),
+    opacity var(--t-base) !important;
+  will-change: transform;
+}
+.woocommerce ul.products li.product:hover a img,
+.woocommerce-page ul.products li.product:hover a img {
+  transform: scale(1.06) !important;
+  opacity: 0.93 !important;
+}
+
+/* WooCommerce category cards */
+.woocommerce ul.products li.product-category,
+.woocommerce-page ul.products li.product-category {
+  transition:
+    transform var(--t-base),
+    box-shadow var(--t-base) !important;
+}
+.woocommerce ul.products li.product-category:hover,
+.woocommerce-page ul.products li.product-category:hover {
+  transform: translateY(-8px) !important;
+  box-shadow: 0 24px 56px rgba(0,0,0,0.11) !important;
+}
+.woocommerce ul.products li.product-category:hover img,
+.woocommerce-page ul.products li.product-category:hover img {
+  transform: scale(1.05) !important;
+}
+
+
+/* ================================================================
+   BOOTSTRAP BUTTONS
+================================================================ */
+.btn {
+  transition:
+    background var(--t-base),
+    border-color var(--t-base),
+    color var(--t-base),
+    box-shadow var(--t-base),
+    transform var(--t-base) !important;
+}
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+}
+.btn:active {
+  transform: translateY(0);
+  box-shadow: none;
+}
+.btn-primary:hover {
+  background: var(--orange-dark) !important;
+  border-color: var(--orange-dark) !important;
+  box-shadow: var(--shadow-btn) !important;
+}
+.btn-outline-primary:hover {
+  background: var(--orange) !important;
+  border-color: var(--orange) !important;
+  color: #fff !important;
+}
+.btn-dark:hover,
+.btn-secondary:hover {
+  background: var(--navy-mid) !important;
+  border-color: var(--navy-mid) !important;
+  box-shadow: var(--shadow-btn-navy) !important;
+}
+
+
+/* ================================================================
+   GUTENBERG BUTTON BLOCK
+================================================================ */
+.wp-block-button__link {
+  transition:
+    background var(--t-base),
+    color var(--t-base),
+    box-shadow var(--t-base),
+    transform var(--t-base) !important;
+}
+.wp-block-button__link:hover {
+  box-shadow: 0 8px 22px rgba(0,0,0,0.15) !important;
+  transform: translateY(-2px) !important;
+  filter: brightness(0.92);
+}
+.wp-block-button__link:active {
+  transform: translateY(0) !important;
+  box-shadow: none !important;
+}
+
+
+/* ================================================================
+   ALL FORM INPUTS — focus states
+================================================================ */
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="tel"],
+input[type="number"],
+input[type="url"],
+textarea,
+select {
+  transition:
+    border-color var(--t-base),
+    box-shadow var(--t-base) !important;
+}
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus,
+input[type="tel"]:focus,
+input[type="number"]:focus,
+input[type="url"]:focus,
+textarea:focus,
+select:focus {
+  border-color: var(--orange) !important;
+  box-shadow: 0 0 0 3px rgba(244,116,67,0.15) !important;
+  outline: none !important;
+}
+
+
+/* ================================================================
+   FIBOSEARCH / DGWT SEARCH BAR
+================================================================ */
+.dgwt-wcas-search-input,
+.dgwt-wcas-search-wrapp input[type="search"] {
+  transition:
+    border-color var(--t-base),
+    box-shadow var(--t-base) !important;
+}
+.dgwt-wcas-search-input:focus,
+.dgwt-wcas-search-wrapp input[type="search"]:focus {
+  border-color: var(--orange) !important;
+  box-shadow: 0 0 0 3px rgba(244,116,67,0.18),
+              0 4px 16px rgba(0,0,0,0.08) !important;
+  outline: none !important;
+}
+
+/* FiboSearch submit/icon button */
+.dgwt-wcas-ico-magnifier,
+.dgwt-wcas-search-submit {
+  transition:
+    color var(--t-base),
+    background var(--t-base) !important;
+}
+.dgwt-wcas-ico-magnifier:hover,
+.dgwt-wcas-search-submit:hover {
+  color: var(--orange) !important;
+}
+
+
+/* ================================================================
+   NAVIGATION LINKS
+================================================================ */
+.ss-navbar .nav-link,
+.ss-navbar a {
+  transition:
+    color var(--t-base),
+    opacity var(--t-base) !important;
+}
+.ss-navbar .nav-link:hover,
+.ss-navbar a:hover {
+  color: var(--orange) !important;
+}
+
+/* Dropdown / sub-menu items */
+.ss-navbar .sub-menu a,
+.ss-navbar .dropdown-menu a,
+.ss-navbar .dropdown-item {
+  transition:
+    background var(--t-fast),
+    color var(--t-fast),
+    padding-left var(--t-fast) !important;
+}
+.ss-navbar .sub-menu a:hover,
+.ss-navbar .dropdown-menu a:hover,
+.ss-navbar .dropdown-item:hover {
+  background: rgba(244,116,67,0.07) !important;
+  color: var(--orange) !important;
+  padding-left: 20px !important;
+}
+
+
+/* ================================================================
+   FOOTER LINKS & SOCIAL BUTTONS
+================================================================ */
+.ss-footer-links li a {
+  transition:
+    color var(--t-base),
+    padding-left var(--t-fast) !important;
+}
+.ss-footer-links li a:hover {
+  color: var(--orange) !important;
+  padding-left: 6px !important;
+}
+
+.ss-social-btn {
+  transition:
+    background var(--t-base),
+    color var(--t-base),
+    transform var(--t-base) !important;
+}
+.ss-social-btn:hover {
+  background: var(--orange) !important;
+  color: #fff !important;
+  transform: translateY(-2px) scale(1.08) !important;
+}
+
+/* Trust chips */
+.ss-trust-chip {
+  transition:
+    border-color var(--t-base),
+    color var(--t-base) !important;
+}
+.ss-trust-chip:hover {
+  border-color: rgba(244,116,67,0.35) !important;
+  color: rgba(255,255,255,0.6) !important;
+}
+
+/* Pre-footer CTA button */
+.ss-prefooter-btn {
+  transition:
+    background var(--t-base),
+    box-shadow var(--t-base),
+    transform var(--t-base) !important;
+}
+.ss-prefooter-btn:hover {
+  background: var(--orange-dark) !important;
+  box-shadow: 0 10px 28px rgba(244,116,67,0.4) !important;
+  transform: translateY(-2px) scale(1.02) !important;
+}
+.ss-prefooter-btn:active {
+  transform: translateY(0) scale(1) !important;
+  box-shadow: none !important;
+}
+
+/* ================================================================
+   SECTION HEAD — Stack on mobile
+================================================================ */
+@media (max-width: 767px) {
+  .ss-section-head {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 12px;
+  }
+
+  .ss-section-head .ss-link {
+    align-self: flex-start;
+  }
+}
+
+
+/* ================================================================
+   CATEGORIES CAROUSEL — NAVIGATION ARROWS
+================================================================ */
+
+/* Base arrow styles (desktop) */
+.ss-cat-prev,
+.ss-cat-next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: var(--navy);
+  font-size: 18px;
+  transition:
+    background var(--t-base),
+    color var(--t-base),
+    box-shadow var(--t-base),
+    transform var(--t-base);
+}
+
+.ss-cat-prev {
+  left: -16px;
+}
+
+.ss-cat-next {
+  right: -16px;
+}
+
+.ss-cat-prev:hover,
+.ss-cat-next:hover {
+  background: var(--orange);
+  color: #fff;
+  box-shadow: var(--shadow-btn);
+  transform: translateY(-50%) scale(1.08);
+}
+
+/* Hide arrows on mobile — users swipe naturally */
+@media (max-width: 767px) {
+  .ss-cat-prev,
+  .ss-cat-next {
+    display: none !important;
+  }
 }

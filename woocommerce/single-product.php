@@ -4,6 +4,13 @@ get_header();
 global $product;
 ?>
 
+
+<style>
+	.ss-stock-badge .ss-stock-in{
+		margin-left: 40px !important;
+	}
+</style>
+
 <div class="ssp-page">
     <div class="container">
 

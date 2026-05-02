@@ -67,7 +67,7 @@
   text-decoration: none;
 }
 .ss-logo img.custom-logo {
-  max-height: 44px;
+  max-height: 48px;
   width: auto;
   display: block;
 }
@@ -243,6 +243,24 @@
 }
 .ss-menu .menu-item-has-children {
   position: relative;
+}
+.ss-menu .menu-item-has-children > a {
+  padding-right: 30px !important;
+}
+.ss-menu .menu-item-has-children > a::before {
+  content: "\F282";
+  font-family: "bootstrap-icons";
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 10px;
+  opacity: 0.5;
+  transition: transform 0.2s ease;
+}
+.ss-menu .menu-item-has-children:hover > a::before {
+  transform: translateY(-50%) rotate(180deg);
+  opacity: 1;
 }
 .ss-menu .menu-item-has-children:hover .sub-menu {
   display: block;
@@ -571,31 +589,12 @@
   width: 220px;
 }
 
-/* FIX: Logo image constrained properly */
-.custom-logo-link {
-  display: block;
-}
-.custom-logo-link img.custom-logo {
-  max-height: 44px !important;
-  max-width: 180px !important;
-  width: auto !important;
-  height: auto !important;
-  object-fit: contain;
-}
-
-/* FIX: Hide the empty anchor WP outputs before the real logo */
-.ss-logo:not(.custom-logo-link) {
-  display: none;
-}
-
-/* FIX: Search column gets proper space */
-.ss-main-header .col-12.col-lg-7 {
-  flex: 1 1 0;
-  min-width: 0;
-}
-
 /* FIX: Actions column */
 .ss-main-header .col-6.col-lg-3 {
   flex: 0 0 auto;
   width: 180px;
 }
+
+
+
+

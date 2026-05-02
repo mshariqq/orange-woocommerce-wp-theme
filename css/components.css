@@ -10,8 +10,4 @@
   border-radius: 50px;
 }
 
-/* LOGO */
-.custom-logo {
-  max-height: 50px;
-  width: auto;
-}
+/* LOGO REMOVED — Consolidated in header.css */

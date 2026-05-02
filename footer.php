@@ -1,209 +1,186 @@
-<main/>
-<footer class="ss-footer">
+<?php
+/**
+ * SnapServe Supply — footer.php
+ * Premium, unified dark eCommerce footer.
+ */
+?>
 
-    <!-- TOP SECTION -->
-    <div class="container ss-footer-main">
-        <div class="row gy-4 align-items-start">
+</main>
 
-            <!-- Footer Column 1 -->
-            <div class="col-lg-4">
-                <?php if(is_active_sidebar('footer_col_1')): ?>
-                    <?php dynamic_sidebar('footer_col_1'); ?>
-                <?php endif; ?>
-            </div>
-
-            <!-- Footer Column 2 -->
-            <div class="col-6 col-lg-2">
-                <?php if(is_active_sidebar('footer_col_2')): ?>
-                    <?php dynamic_sidebar('footer_col_2'); ?>
-                <?php endif; ?>
-            </div>
-
-            <!-- Footer Column 3 -->
-            <div class="col-6 col-lg-3">
-                <?php if(is_active_sidebar('footer_col_3')): ?>
-                    <?php dynamic_sidebar('footer_col_3'); ?>
-                <?php endif; ?>
-            </div>
-
-            <!-- Footer Column 4 -->
-            <div class="col-lg-3">
-                <?php if(is_active_sidebar('footer_col_4')): ?>
-                    <?php dynamic_sidebar('footer_col_4'); ?>
-                <?php endif; ?>
-            </div>
-
+<!-- SECTION 1: HOW IT WORKS (Premium Compact CTA) ================= -->
+<section class="ss-how-it-works ss-hiw-premium">
+  <div class="container">
+    <div class="row ss-hiw-grid g-4 align-items-center">
+      
+      <!-- Step 1 -->
+      <div class="col-lg-4 mt-0">
+        <div class="ss-hiw-item">
+          <div class="ss-hiw-visual">
+            <span class="ss-hiw-step">01</span>
+            
+          </div>
+          <div class="ss-hiw-content">
+            <h3>Search Model</h3>
+            <p>Enter your appliance model to find exact matches.</p>
+          </div>
+          <div class="ss-hiw-connector"></div>
         </div>
+      </div>
+
+      <!-- Step 2 -->
+      <div class="col-lg-4 mt-0">
+        <div class="ss-hiw-item">
+          <div class="ss-hiw-visual">
+            <span class="ss-hiw-step">02</span>
+            
+          </div>
+          <div class="ss-hiw-content">
+            <h3>Find Your Part</h3>
+            <p>Browse 100% genuine OEM parts for your model.</p>
+          </div>
+          <div class="ss-hiw-connector"></div>
+        </div>
+      </div>
+
+      <!-- Step 3 -->
+      <div class="col-lg-4 mt-0">
+        <div class="ss-hiw-item">
+          <div class="ss-hiw-visual">
+            <span class="ss-hiw-step">03</span>
+            
+          </div>
+          <div class="ss-hiw-content">
+            <h3>Fast Delivery</h3>
+            <p>Same-day dispatch to get your repair started fast.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- SECTION 2: UNIFIED DARK FOOTER ========================= -->
+<footer class="ss-merged-footer" itemscope itemtype="https://schema.org/WPFooter">
+  <div class="container">
+    
+    <!-- Top Row: Newsletter & Main Links -->
+    <div class="row ss-footer-top">
+      
+      <!-- Newsletter -->
+      <div class="col-lg-5 mb-5 mb-lg-0">
+        <div class="ss-footer-newsletter-minimal">
+          <h5>Join our mailing list</h5>
+          <p>Get exclusive part deals and appliance maintenance tips.</p>
+          <?php echo do_shortcode('[fluentform id="2"]'); ?>
+        </div>
+      </div>
+
+      <!-- Links Column 1: Customer Service -->
+      <div class="col-lg-2 col-md-4 mb-4 mb-lg-0">
+        <div class="ss-footer-links-col">
+          <h5>Customer Service</h5>
+          <?php
+          wp_nav_menu([
+            'theme_location' => 'footer-customer-service',
+            'container'      => false,
+            'menu_class'     => 'ss-footer-menu-list',
+            'fallback_cb'    => false,
+            'depth'          => 1,
+          ]);
+          ?>
+        </div>
+      </div>
+
+      <!-- Links Column 2: Our Policies -->
+      <div class="col-lg-2 col-md-4 mb-4 mb-lg-0">
+        <div class="ss-footer-links-col">
+          <h5>Our Policies</h5>
+          <?php
+          wp_nav_menu([
+            'theme_location' => 'footer-policies',
+            'container'      => false,
+            'menu_class'     => 'ss-footer-menu-list',
+            'fallback_cb'    => false,
+            'depth'          => 1,
+          ]);
+          ?>
+        </div>
+      </div>
+
+      <!-- Links Column 3: Company Info -->
+      <div class="col-lg-3 col-md-4 mb-4 mb-lg-0">
+        <div class="ss-footer-links-col">
+          <h5>Company Info</h5>
+          <?php
+          wp_nav_menu([
+            'theme_location' => 'footer-company-info',
+            'container'      => false,
+            'menu_class'     => 'ss-footer-menu-list',
+            'fallback_cb'    => false,
+            'depth'          => 1,
+          ]);
+          ?>
+          <div class="ss-footer-contact-info mt-3">
+            <div class="contact-item">
+              <i class="bi bi-envelope"></i>
+              <span><?php echo esc_html( get_theme_mod( 'ss_contact_email', 'admin@snapserveco.com' ) ); ?></span>
+            </div>
+<!--             <div class="contact-item mt-2">
+              <i class="bi bi-telephone"></i>
+              <span><?php echo esc_html( get_theme_mod( 'ss_contact_phone', '(888) 123-4567' ) ); ?></span>
+            </div> -->
+			  <div class="contact-item mt-2 align-items-start">
+  <i class="bi bi-geo-alt"></i>
+  <span class="ss-footer-address">
+    SnapServe Solutions LLC<br>
+    PO Box 11089<br>
+    Riviera Beach, FL 33404
+  </span>
+</div>
+          </div>
+        </div>
+      </div>
+
     </div>
 
-    <!-- BOTTOM SECTION -->
-    <div class="ss-footer-bottom">
-        <div class="container d-flex flex-column flex-md-row justify-content-between align-items-center">
-            <?php if(is_active_sidebar('footer_bottom')): ?>
-                <?php dynamic_sidebar('footer_bottom'); ?>
-            <?php else: ?>
-                <p>© <?php echo date('Y'); ?> <?php bloginfo('name'); ?></p>
-            <?php endif; ?>
+    <hr class="ss-footer-divider">
+
+    <!-- Bottom Row: Copyright, Socials, Payments -->
+    <div class="row align-items-center ss-footer-bottom-minimal">
+      
+      <!-- Copyright & Trust -->
+      <div class="col-md-4 mb-4 mb-md-0">
+        <p class="ss-copyright">
+          &copy; <?php echo esc_html( date( 'Y' ) ); ?> <?php echo esc_html( get_theme_mod( 'ss_dba_name', 'SnapServe Supply' ) ); ?>.
+          <span class="ms-3">Secure Checkout • Genuine Parts</span>
+        </p>
+      </div>
+
+      <!-- Social Icons -->
+      <div class="col-md-4 text-center mb-4 mb-md-0">
+        <div class="ss-social-minimal">
+          <a href="<?php echo esc_url( get_theme_mod( 'ss_social_facebook', '#' ) ); ?>" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+          <a href="<?php echo esc_url( get_theme_mod( 'ss_social_instagram', '#' ) ); ?>" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+          <a href="<?php echo esc_url( get_theme_mod( 'ss_social_youtube', '#' ) ); ?>" aria-label="YouTube"><i class="bi bi-youtube"></i></a>
         </div>
+      </div>
+
+      <!-- Payment Icons -->
+      <div class="col-md-4 text-md-end">
+        <div class="ss-payment-icons">
+          <i class="bi bi-credit-card-2-front" title="Secure Payment"></i>
+          <i class="bi bi-shield-lock" title="SSL Secured"></i>
+          <span class="ss-payment-label">Stripe Payments</span>
+        </div>
+      </div>
+
     </div>
 
+  </div>
 </footer>
 
 <?php wp_footer(); ?>
-<script>
-	document.addEventListener('DOMContentLoaded', function () {
-
-  // =====================
-  // WAIT FOR BOOTSTRAP
-  // =====================
-  function waitForBootstrap(callback) {
-    if (typeof bootstrap !== 'undefined') {
-      callback();
-    } else {
-      setTimeout(function () { waitForBootstrap(callback); }, 50);
-    }
-  }
-
-  // =====================
-  // STICKY HEADER SHADOW
-  // =====================
-  const header = document.querySelector('.ss-header');
-  if (header) {
-    window.addEventListener('scroll', function () {
-      header.classList.toggle('ss-scrolled', window.scrollY > 10);
-    });
-  }
-
-  // =====================
-  // SEARCH OVERLAY
-  // =====================
-  const searchToggle  = document.getElementById('searchToggle');
-  const searchOverlay = document.getElementById('searchOverlay');
-
-  function openSearch() {
-    searchOverlay.classList.add('active');
-    document.body.style.overflow = 'hidden';
-    const input = searchOverlay.querySelector('input');
-    if (input) setTimeout(() => input.focus(), 100);
-  }
-
-  function closeSearch() {
-    searchOverlay.classList.remove('active');
-    document.body.style.overflow = '';
-  }
-
-  if (searchToggle && searchOverlay) {
-    // Open on button click
-    searchToggle.addEventListener('click', function (e) {
-      e.stopPropagation();
-      openSearch();
-    });
-
-    // Close when clicking the dark backdrop (overlay itself, not the search box)
-    searchOverlay.addEventListener('click', function (e) {
-      // only close if click is directly on overlay, not on child elements
-      if (e.target === searchOverlay) {
-        closeSearch();
-      }
-    });
-
-    // Close on ESC
-    document.addEventListener('keydown', function (e) {
-      if (e.key === 'Escape') closeSearch();
-    });
-  }
-
-  // =====================
-  // DESKTOP NAVBAR DROPDOWN
-  // =====================
-  const dropdowns = document.querySelectorAll('.ss-navbar .menu-item-has-children');
-
-  dropdowns.forEach(function (item) {
-    const submenu = item.querySelector('.sub-menu');
-    if (!submenu) return;
-
-    item.addEventListener('mouseenter', function () {
-      if (window.innerWidth >= 992) submenu.style.display = 'block';
-    });
-    item.addEventListener('mouseleave', function () {
-      if (window.innerWidth >= 992) submenu.style.display = '';
-    });
-  });
-
-  // =====================
-  // MOBILE OFFCANVAS
-  // =====================
-  waitForBootstrap(function () {
-    const mobileMenuEl = document.getElementById('mobileMenu');
-    if (!mobileMenuEl) return;
-
-    // Kill any instance Bootstrap auto-created via data attributes
-    const existing = bootstrap.Offcanvas.getInstance(mobileMenuEl);
-    if (existing) existing.dispose();
-
-    // Single clean instance — NO animation (eliminates flicker)
-    const offcanvas = new bootstrap.Offcanvas(mobileMenuEl, {
-      backdrop: true,
-      scroll: false,
-      keyboard: true
-    });
-
-    // Hamburger button
-    const toggleBtn = document.querySelector('[data-bs-target="#mobileMenu"]');
-    if (toggleBtn) {
-      // Remove Bootstrap's own data attrs to prevent double-firing
-      toggleBtn.removeAttribute('data-bs-toggle');
-      toggleBtn.removeAttribute('data-bs-target');
-
-      toggleBtn.addEventListener('click', function (e) {
-        e.preventDefault();
-        e.stopPropagation();
-        offcanvas.toggle();
-      });
-    }
-
-    // Close on nav link click (not submenu toggles)
-    mobileMenuEl.addEventListener('click', function (e) {
-      const link = e.target.closest('a');
-      if (link && !link.closest('.menu-item-has-children .sub-menu') === false) return;
-      if (link) offcanvas.hide();
-    });
-
-    // Mobile submenu tap toggle
-    const mobileDropdowns = mobileMenuEl.querySelectorAll('.menu-item-has-children');
-    mobileDropdowns.forEach(function (item) {
-      const link = item.querySelector(':scope > a');
-      const submenu = item.querySelector(':scope > .sub-menu');
-      if (!link || !submenu) return;
-
-      link.addEventListener('click', function (e) {
-        e.preventDefault();
-        e.stopPropagation();
-        // Close others
-        mobileDropdowns.forEach(function (other) {
-          if (other !== item) {
-            const otherSub = other.querySelector(':scope > .sub-menu');
-            if (otherSub) otherSub.classList.remove('open');
-          }
-        });
-        submenu.classList.toggle('open');
-      });
-    });
-  });
-
-  // =====================
-  // CART BADGE SYNC
-  // =====================
-  function updateCartBadges() {
-    const badges = document.querySelectorAll('.ss-cart b');
-    const count  = document.querySelector('.woocommerce-cart-count');
-    if (count) badges.forEach(b => b.textContent = count.textContent);
-  }
-  document.body.addEventListener('wc_fragments_refreshed', updateCartBadges);
-  document.body.addEventListener('added_to_cart', updateCartBadges);
-
-});
-</script>
-
 </body>
 </html>

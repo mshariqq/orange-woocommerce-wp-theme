@@ -11,7 +11,12 @@ get_header();
         <div class="shop-topbar">
             <div class="left">
                 <h1><?php woocommerce_page_title(); ?></h1>
-                <span class="count"><?php woocommerce_result_count(); ?></span>
+                <div class="shop-meta">
+                    <span class="count"><?php woocommerce_result_count(); ?></span>
+                    <button class="ss-filter-toggle d-lg-none" data-bs-toggle="collapse" data-bs-target="#shopFilters">
+                        <i class="bi bi-funnel"></i> Filters
+                    </button>
+                </div>
             </div>
 
             
@@ -57,14 +62,14 @@ get_header();
         <div class="shop-layout">
 
             <!-- SIDEBAR (CUSTOM UI) -->
-            <aside class="shop-filters">
+            <aside class="shop-filters collapse d-lg-block" id="shopFilters">
 
-                <div class="filter-box">
+<!--                 <div class="filter-box">
                     <h4>Search</h4>
                     <?php get_product_search_form(); ?>
-                </div>
+                </div> -->
 
-                <div class="filter-box">
+                <div class="filter-box mb-md-4">
                     <h4>Categories</h4>
                     <ul>
                         <?php
@@ -76,7 +81,23 @@ get_header();
                     </ul>
                 </div>
 
-                <div class="filter-box">
+                <?php
+                $brands = get_terms( array( 'taxonomy' => 'product_brand', 'hide_empty' => true ) );
+                if ( ! empty( $brands ) && ! is_wp_error( $brands ) ) : ?>
+                <div class="filter-box mb-md-4">
+                    <h4>Brands</h4>
+                    <ul>
+                        <?php
+                        wp_list_categories([
+                            'taxonomy' => 'product_brand',
+                            'title_li' => '',
+                        ]);
+                        ?>
+                    </ul>
+                </div>
+                <?php endif; ?>
+
+                <div class="filter-box mb-md-4">
                     <h4>Filter by Price</h4>
                     <?php the_widget('WC_Widget_Price_Filter'); ?>
                 </div>
@@ -104,7 +125,14 @@ get_header();
     <!-- IMAGE -->
     <div class="product-image">
         <a href="<?php the_permalink(); ?>">
-            <?php echo $product->get_image(); ?>
+            <?php 
+            if ( has_post_thumbnail() ) {
+                echo $product->get_image(); 
+            } else {
+                // echo wc_placeholder_img( 'woocommerce_thumbnail' );
+                echo '<img src="https://placehold.co/200x150?text=No+Image" alt="'.get_the_title() .'" />';
+            }
+            ?>
         </a>
 
         <?php if ($product->is_on_sale()) : ?>
@@ -116,10 +144,7 @@ get_header();
     <div class="product-info">
 
         <!-- RATING -->
-        <div class="rating">
-            <?php echo wc_get_rating_html($product->get_average_rating()); ?>
-            <span>(<?php echo $product->get_review_count(); ?>)</span>
-        </div>
+        <?php echo ss_get_rating_html( $product ); ?>
 
         <!-- TITLE -->
         <h3 class="title">
@@ -128,10 +153,16 @@ get_header();
             </a>
         </h3>
 
-        <!-- META (CATEGORY) -->
-        <p class="product-meta">
+        <!-- META (BRAND) -->
+        <p class="product-brand">
             <?php
-            echo wc_get_product_category_list($product->get_id(), ', ');
+            $brands = get_the_terms($product->get_id(), 'product_brand');
+            if ( ! empty( $brands ) && ! is_wp_error( $brands ) ) {
+                $brand_names = wp_list_pluck( $brands, 'name' );
+                echo esc_html( implode( ', ', $brand_names ) );
+            } else {
+                echo esc_html__( 'Generic Brand', 'snapserve' );
+            }
             ?>
         </p>
 
@@ -151,7 +182,11 @@ get_header();
                data-product_sku="<?php echo $product->get_sku(); ?>"
                aria-label="Add to cart">
                
-               🛒
+               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+				  <path d="M3 3H5L6.6 12.59C6.7 13.2 7.23 13.65 7.85 13.65H17.4C17.95 13.65 18.43 13.27 18.56 12.74L20.2 6.74C20.37 6.12 19.9 5.5 19.25 5.5H6.21" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+				  <circle cx="9" cy="20" r="1.5" fill="white"/>
+				  <circle cx="17" cy="20" r="1.5" fill="white"/>
+				</svg>
             </a>
 
         </div>
